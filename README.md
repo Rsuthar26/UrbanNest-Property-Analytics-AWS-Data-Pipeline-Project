@@ -85,7 +85,6 @@ The first step was setting up cloud storage for the raw dataset. I created an S3
 - Uploaded the dataset: `house_prices.csv`
 - Structured the data lake: `s3://urban-nest-data-lake-rs/raw-data/house_prices.csv`
 
-📸 *Screenshot: S3 bucket open showing `house_prices.csv` inside the `raw-data/` folder*
 
 ---
 
@@ -97,7 +96,6 @@ Instead of manually defining the dataset structure, I set up a Glue Crawler to s
 - Set data source: S3 → `urban-nest-data-lake-rs/raw-data/`
 - Set output database: `urban_nest_db`
 
-📸 *Screenshot: Glue Crawlers page showing `urban-nest-house-crawler` with data source and output database*
 
 ---
 
@@ -107,10 +105,6 @@ I ran the crawler against the S3 bucket. It scanned the CSV, detected the three 
 - Detected the dataset schema automatically
 - Created table `raw_raw_data` in the AWS Glue Data Catalog
 - Made the dataset queryable via Athena
-
-📸 *Screenshot 1: Crawler status showing `Ready` after successful run*
-
-📸 *Screenshot 2: Glue Data Catalog showing `raw_raw_data` table with columns `rooms`, `distance`, `value`*
 
 ---
 
@@ -122,12 +116,6 @@ Using Glue Studio's visual editor, I built a three-node ETL pipeline that reads 
 - Saved cleaned data to: `s3://urban-nest-data-lake-rs/processed/`
 - Output format: Parquet
 
-📸 *Screenshot 1: Glue Studio visual ETL workflow — Source → Drop Null Fields → Target*
-
-📸 *Screenshot 2: ETL job run showing status `Succeeded`*
-
-📸 *Screenshot 3: S3 `processed/` folder showing the `.snappy.parquet` output file*
-
 ---
 
 ### Task 5 — Query Using Amazon Athena
@@ -135,8 +123,6 @@ With the pipeline complete, I used Athena to run SQL queries directly on the pro
 
 - Connected Athena to `urban_nest_db`
 - Ran SQL queries directly on the processed data in S3
-
-📸 *Screenshot: Athena query editor showing SQL and results table*
 
 ---
 
